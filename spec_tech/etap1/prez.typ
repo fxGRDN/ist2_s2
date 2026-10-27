@@ -1,9 +1,5 @@
 // Etap 1 — opis słowny problemu.
 // Kompilacja: typst compile prez.typ prez.pdf
-//
-// Całość treści slajdów została uzyskana z wykorzystaniem AI
-// na podstawie artykułu Gąsior, Drwal (Computer Networks, 2013).
-// Przed wysłaniem uzupełnij skład grupy.
 
 #let group = [Dawid Nowak, Szymon Pestrowicz, Kacper Borys]
 
@@ -16,7 +12,6 @@
     grid(
       columns: (1fr, auto),
       column-gutter: 1em,
-      [Całość treści slajdów uzyskana z wykorzystaniem AI. Źródło merytoryczne: Gąsior, Drwal (2013).],
       [#counter(page).display()],
     )
   },
@@ -69,299 +64,168 @@
 // ============================================================
 
 #align(horizon)[
-#tag[Etap 1 · opis problemu]
-#v(0.55em)
-#text(22pt, weight: "bold", fill: accent)[
-  Podział pojemności łączy w sieci autonomicznej
-]
-#v(0.28em)
-#text(13pt)[
-  Gra o alokację przepustowości i równowaga, której nie opłaca się porzucać
-]
-#v(0.7em)
-#text(11pt, fill: muted)[
-  Specjalistyczne technologie w sieciach informatycznych nowej generacji
-]
-#v(0.65em)
-#line(length: 100%, stroke: 0.8pt + line-col)
-#v(0.55em)
-#text(11.5pt)[
-  D. Gąsior, M. Drwal, _Pareto-optimal Nash equilibrium in capacity allocation game for self-managed networks_, Computer Networks 57 (2013), 2817–2832. DOI: 10.1016/j.comnet.2013.06.012
-]
-#v(0.45em)
-#text(12pt)[Grupa: #group]
-#v(0.7em)
-#text(10.5pt, fill: muted)[
-  *Zastosowanie AI.* Całość treści tych slajdów została uzyskana z wykorzystaniem AI na podstawie artykułu. Stopka jest na każdym slajdzie. Skład grupy sprawdza treść przed zaliczeniem.
-]
-]
-
-
-// ============================================================
-// 3. Opis
-// ============================================================
-
-#slide[Opis problemu][
-  Sieć składa się z łączy o skończonej pojemności i z przepływów,
-  czyli transmisji o *ustalonej trasie*. Routing jest już wybrany.
-  Przedmiotem decyzji nie jest ścieżka, tylko *porcja pojemności*,
-  jaką każde łącze oddaje każdemu przepływowi, który przez nie przechodzi.
-
-  #v(0.45em)
-  Każdy przepływ ma użyteczność: szybciej jest lepiej, ale kolejny przyrost
-  szybkości daje coraz mniejszy zysk. W artykule ta funkcja jest też czytana
-  jako skłonność użytkownika do zapłaty operatorowi. Rozważane funkcje
-  prowadzą do podziału *proporcjonalnie sprawiedliwego*.
-
-  #v(0.45em)
-  #card[
-    *Cel globalny* (network utility maximization): dobrać szybkości tak,
-    by suma użyteczności była jak największa i żadne łącze nie dostało
-    więcej ruchu, niż ma pojemności.
+  #tag[Etap 1 · Opis problemu]
+  #v(0.55em)
+  #text(22pt, weight: "bold", fill: accent)[
+    Podział pojemności łączy w sieci autonomicznej
+  ]
+  #v(0.7em)
+  #text(11pt, fill: muted)[
+    Specjalistyczne technologie w sieciach informatycznych nowej generacji
+  ]
+  #v(0.65em)
+  #line(length: 100%, stroke: 0.8pt + line-col)
+  #v(0.55em)
+  #text(11.5pt)[
+    D. Gąsior, M. Drwal, _Pareto-optimal Nash equilibrium in capacity allocation game for self-managed networks_, Computer Networks 57 (2013), 2817–2832. DOI: 10.1016/j.comnet.2013.06.012
   ]
   #v(0.45em)
-  Szybkość przepływu wyznacza *najmniejsza* porcja przyznana mu na trasie.
-  Pojemność oddana ponad to wąskie gardło przepada.
-]
+  #text(12pt)[Grupa: #group]
+  #v(0.7em)
+  #text(10.5pt, fill: muted)[
+    *Zastosowanie AI.* Do utworzenia i skomponowania prezentacji zostało wykorzystane AI. ]]
+
 
 // ============================================================
-// 4. Dlaczego gra
+// 2. Opis
 // ============================================================
 
-#slide[Skąd bierze się gra][
-  Przy skali operatora nikt nie ustawia wszystkich szybkości naraz.
-  Decyzja zapada na routerze, z wiedzy lokalnej i krótkiego sygnału o zatorze.
+#slide[1. Opis problemu i kontekst][
+  Współczesne sieci szkieletowe i systemy autonomiczne (AS) obsługują tysiące jednoczesnych transmisji danych. W takich środowiskach centralne zarządzanie podziałem pasma staje się niemożliwe ze względu na skalę, a koszty manualnej konfiguracji przez administratorów stale przewyższają ceny samego sprzętu. Wymusza to przejście na paradygmat *sieci autonomicznych* (*self-managed networks*), w których urządzenia sieciowe same optymalizują swoje parametry.
 
   #v(0.4em)
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 0.7em,
-    card[
-      *Typowy model*\
-      Graczem jest użytkownik albo źródło. Wybiera trasę lub szybkość
-      i dba tylko o siebie. Tak działają gry zatorowe i gry o routing.
-    ],
-    card[
-      *Model z artykułu*\
-      Graczem jest łącze: interfejs wyjściowy routera.
-      Pojemność rozdaje urządzenie operatora, nie aplikacja.
-    ],
-  )
-  #v(0.5em)
-  Routery mogą należeć do *różnych organizacji* i nie muszą liczyć alokacji
-  tym samym algorytmem. Każde łącze dba o usługi na własnych interfejsach.
-  Samo optimum centralne tego nie opisuje: potrzebny jest stan, z którego
-  *żadnemu łączu nie opłaca się odejść w pojedynkę*.
-]
-
-// ============================================================
-// 5. Gra opisowo
-// ============================================================
-
-#slide[Gra o pojemność, bez wzorów][
-  #term[Gracz][jedno łącze.]
-  #term[Strategia dopuszczalna][
-    podział pojemności tego łącza między jego przepływy.
-    Suma porcji nie przekracza pojemności. Cudzym przepływom łącze nic nie daje.
-  ]
-  #term[Profil strategii][zestaw podziałów wszystkich łączy.]
-  #term[Wypłata łącza][
-    ocena *rzeczywistych* szybkości przepływów przez to łącze.
-    Szybkość to minimum po całej trasie, więc łącze nie zyskuje na porcji,
-    której wąskie gardło dalej i tak nie przepuści.
-  ]
-  #v(0.15em)
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 0.7em,
-    card[
-      *Wagi równe*\
-      Każdy przepływ tak samo wchodzi do wypłaty łącza.
-    ],
-    card[
-      *Wagi odwrotne do długości trasy*\
-      Długi przepływ liczy się słabiej. Przy tych wagach suma wypłat
-      pokrywa się z celem globalnym.
-    ],
-  )
-]
-
-// ============================================================
-// 6. Czego szukamy
-// ============================================================
-
-#slide[Jakie rozwiązanie jest dobre][
-  #card[
-    *Równowaga Nasha w strategiach czystych.*
-    Przy niezmienionych decyzjach pozostałych żadne łącze nie podniesie
-    własnej wypłaty, zmieniając swój podział.
-  ]
-  #v(0.45em)
-  #card[
-    *Silna optymalność w sensie Pareta.*
-    Nie ma innego podziału, przy którym czyjaś wypłata rośnie,
-    a niczyja nie maleje.
-  ]
-  #v(0.5em)
-  Artykuł podaje rozproszony sposób liczenia, który taki stan znajduje.
-  Podział „każde łącze raz, tylko u siebie” równowagą być nie musi:
-  łącze za wąskim gardłem woli oddać wolną pojemność przepływom lokalnym.
-
-  #v(0.35em)
-  *Cena stabilności* i *cena anarchii* mierzą, jak daleko równowaga odchodzi
-  od optimum centralnego. Przy wagach równych optimum samo jest równowagą,
-  więc cena stabilności wynosi 1. Bez przepływów lokalnych istnieją też
-  równowagi dowolnie złe.
-]
-
-// ============================================================
-// 7. Przykład
-// ============================================================
-
-#slide[Przykład: wąskie gardło i puste oddanie pojemności][
-  Dwa łącza w szeregu, pojemności 10 i 100. Trzy przepływy: jeden przez oba
-  łącza oraz po jednym lokalnym. Użyteczność logarytmiczna, wagi równe.
+  W rozpatrywanym problemie trasy wszystkich przepływów są z góry ustalone. Zadanie sprowadza się do wyznaczenia alokacji przepustowości łączy (problem _NUM_), tak aby zmaksymalizować łączną efektywność transmisji przy zachowaniu ograniczeń fizycznych infrastruktury.
 
   #v(0.4em)
-  #table(
-    columns: (1.45fr, 1fr, 1fr, 1fr),
-    align: (left, center, center, center),
-    stroke: 0.5pt + line-col,
-    inset: (x: 7pt, y: 5pt),
-    table.header(
-      text(weight: "bold", fill: accent)[Łącze],
-      text(weight: "bold", fill: accent)[wspólny],
-      text(weight: "bold", fill: accent)[lokalny na 1],
-      text(weight: "bold", fill: accent)[lokalny na 2],
-    ),
-    [1 · pojemność 10], [5], [5], [—],
-    [2 · krok lokalny], [50], [—], [50],
-    [2 · po korekcie], [5], [—], [95],
-  )
-  #v(0.4em)
-  Po kroku lokalnym wspólny przepływ i tak płynie z szybkością 5.
-  Łącze szybkie oddało mu 45 jednostek, których nie użyje.
-  Gdy *samo* zmieni podział na 5 i 95, jego wypłata rośnie
-  (logarytm z 95 zamiast z 50), a łącze wolne nic nie robi.
-  To nie jest równowaga. Algorytm z artykułu zatrzymuje się właśnie
-  na podziale (5, 5) oraz (5, 95): szybkości wynoszą 5, 5 i 95.
-]
-
-// ============================================================
-// 8. Znaczenie
-// ============================================================
-
-#slide[Dlaczego ten problem jest ważny][
-  #list(
-    [*Koszt obsługi przez ludzi.* Utrzymanie sieci przez administratorów rośnie wobec ceny urządzeń. W sieci autonomicznej człowiek określa cel, a urządzenia mają go realizować.],
-    [*Skala.* W systemie autonomicznym albo u operatora przepływów jest za dużo na jeden centralny rachunek w każdej chwili. Protokół ma działać na routerze.],
-    [*Wiele organizacji.* Sąsiednie routery nie muszą ufać wspólnemu algorytmowi. Analiza równowagi mówi, co zostaje, gdy każdy dba o własne interfejsy.],
-    [*Luka lokalnej sprawiedliwości.* Równy podział na jednym interfejsie nie widzi, że część pojemności i tak utknie na wolniejszym łączu dalej.],
-    [*Jakość równowagi nie jest oczywista.* Przy równych wagach optimum społeczne jest równowagą. W innych układach równowaga może być od niego dowolnie daleko.],
-  )
-]
-
-// ============================================================
-// 9. Zastosowania
-// ============================================================
-
-#slide[Gdzie ten opis się stosuje][
-  #list(
-    [*Sieć operatora z ustalonym routingiem.* Spór dotyczy podziału pojemności interfejsów, nie wyboru trasy przez aplikację.],
-    [*Sterowanie szybkością obok klasycznego TCP.* TCP realizuje pewną użyteczność użytkowników. Tu decyzję o porcjach pojemności podejmują łącza i widzą całą trasę przez minimum.],
-    [*Routery autonomiczne.* Administrator podaje cel (rodzaj użyteczności i wagi). Interfejsy same poprawiają podział, gdy wykryją, że przepływ już stanął na innym łączu.],
-    [*Fragment szeregowy większej sieci.* Jeden przepływ długi i przepływ lokalny na każdym łączu. Dla takiej budowy artykuł opisuje, jak zła może być najgorsza równowaga.],
-  )
-  #v(0.35em)
-  #text(11.5pt, fill: muted)[
-    Pokrewne, ale osobne modele: podział klas jakości usług, pojemność sieci
-    wirtualnych, dostęp bezprzewodowy. W tej pracy trasa jest dana,
-    a gra toczy się o pojemność łącza.
+  #card[
+    *Podstawowy problem:* Rzeczywista szybkość transmisji jest ograniczona przez najwęższe gardło na trasie ($x_r = min_l s_(l r)$). Samodzielny podział pasma na pojedynczym łączu prowadzi do marnotrawstwa zasobów, a nadmiarowa pojemność przyznana zablokowanemu przepływowi przepada, zamiast zasilić inne, lokalne połączenia.
   ]
 ]
 
 // ============================================================
-// 10. Słownik 1
+// 3. Znaczenie problemu
 // ============================================================
 
-#slide[Słownik][
+#slide[2. Wyjaśnienie znaczenia problemu][
+  #set list(spacing: 0.85em)
+  - *Skalowalność i eliminacja centralnego zarządcy* \
+    W wielkich sieciach operatorskich (AS, ISP) ze względu na liczbę przepływów niemożliwe jest globalne wyliczanie alokacji w czasie rzeczywistym. Decyzje muszą zapadać lokalnie na poziomie routerów.
+
+  - *Rosnące koszty operacyjne (OPEX)* \
+    Koszt pracy administratorów i ręcznej konfiguracji urządzeń przewyższa obecnie ceny samego sprzętu. Samoregulacja (*self-management*) pozwala ograniczyć rolę człowieka do zadania polityki działania sieci.
+
+  - *Odzyskiwanie marnowanego pasma (bottleneck)* \
+    Niezależny podział pasma na łączach powoduje straty: nadmiar przepustowości oddany zablokowanej transmisji przepada. Właściwa koordynacja pozwala przesunąć te zasoby na przepływy lokalne.
+
+  - *Ochrona przed samolubnością użytkowników* \
+    Przeniesienie roli gracza z użytkownika końcowego na urządzenie operatora eliminuje ryzyko manipulacji i nadużyć pasma ze strony aplikacji klienckich.
+]
+
+
+#slide[3. Przykładowe zastosowania][
   #grid(
     columns: (1fr, 1fr),
-    gutter: 0.9em,
+    column-gutter: 2em,
     [
-      #term[Sieć autonomiczna][
-        urządzenia same realizują cel administratora, przy ograniczonej koordynacji.
-      ]
-      #term[Przepływ][transmisja o z góry wybranej trasie.]
-      #term[Alokacja][porcje pojemności łącza oddane jego przepływom.]
-      #term[Wąskie gardło][
-        łącze, które na trasie przyznaje najmniej i wyznacza szybkość.
-      ]
-      #term[Przepływ nasycony][
-        doszedł już do swojego minimum na trasie i nie przyspieszy.
-      ]
-      #term[Użyteczność][
-        rosnąca, wklęsła ocena szybkości; także skłonność do zapłaty.
-      ]
+      #text(weight: "bold", fill: accent)[Domeny międzyoperatorskie (AS / ISP)]
+      #v(0.3em)
+      Optymalizacja przepustowości na łączach tranzytowych i stykowych przy z góry wyznaczonym routingu (BGP), gdzie poszczególne organizacje nie wymieniają się wewnętrznymi danymi o topologii.
+
+      #v(1.1em)
+      #text(weight: "bold", fill: accent)[Współpraca z protokołem TCP]
+      #v(0.3em)
+      Warstwa autonomiczna obok mechanizmów transportowych. Routery ustalają bezpieczne limity pasma dla zagregowanych przepływów ruchu, uwzględniając najsłabsze ogniwa na ich ścieżkach.
     ],
     [
-      #term[Użyteczność izoelastyczna][
-        rodzina funkcji dająca podział proporcjonalnie sprawiedliwy.
-        Szczególny przypadek: logarytm.
-      ]
-      #term[NUM][
-        maksymalizacja sumy użyteczności przepływów
-        przy pojemnościach łączy.
-      ]
-      #term[Gracz][
-        łącze, nie użytkownik końcowy.
-      ]
-      #term[Strategia][
-        dopuszczalny podział pojemności jednego łącza.
-      ]
-      #term[Wypłata][
-        użyteczność szybkości przepływów przez dane łącze,
-        z wagą przepływu.
-      ]
-      #term[Dobrobyt społeczny][
-        suma użyteczności wszystkich przepływów.
-        To ten sam cel co NUM.
-      ]
+      #text(weight: "bold", fill: accent)[Wirtualizacja sieci i Network Slicing]
+      #v(0.3em)
+      Autonomiczny podział pasma łączy fizycznych między niezależne sieci wirtualne (*slices*) o różnych profilach ruchu, eliminując konieczność ciągłej interwencji zarządcy wirtualizacji.
+
+      #v(1.1em)
+      #text(weight: "bold", fill: accent)[Sieci mobilne (Self-Organizing Networks)]
+      #v(0.3em)
+      Łącza dosyłowe (*backhaul*) w architekturach 4G LTE oraz 5G, gdzie lokalne węzły muszą samoczynnie równoważyć obciążenie przy dynamicznie zmieniającej się liczbie abonentów.
     ],
   )
 ]
 
-// ============================================================
-// 11. Słownik 2 + dalej
-// ============================================================
 
-#slide[Słownik i co dalej][
+#slide[4. Studium przypadku: Wymiana ruchu międzyoperatorskiego][
+  #text(weight: "bold", fill: accent)[Węzły IXP i tranzyt między operatorami (np. DE-CIX, PLIX)]
+
+  #v(0.3em)
+  - *Sytuacja:* Niezależni operatorzy (ISP) wymieniają ze sobą terabity danych na sekundę. Trasy pakietów są z góry wyznaczone przez protokół BGP.
+  #v(0.3em)
+  - *Problem:* Operatorzy to konkurujące ze sobą firmy, gdzie żaden operator nie zgodzi się na zewnętrzny, centralny system sterujący jego routerami.
+  #v(0.3em)
+  - *Działanie algorytmu:* Router każdego operatora działa autonomicznie. Samodzielnie monitoruje swoje łącza wyjściowe i jeśli wykryje, że dany tranzyt jest spowalniany dalej przez wąskie gardło u obcego operatora, odbiera mu puste pasmo i alokuje je na rzecz *przepływów lokalnych* (transmisji kończących się wewnątrz własnej domeny).
+]
+
+
+#slide[5. Słownik pojęć i skrótów][
+  #set text(11.5pt)
+  #let term(abbrev, full, desc) = block(spacing: 0.55em)[
+    #text(weight: "bold", fill: accent)[#abbrev]
+    #if full != "" [ (#text(fill: muted, style: "italic")[#full]) ]
+    --- #desc
+  ]
+
   #grid(
     columns: (1fr, 1fr),
-    gutter: 0.9em,
+    column-gutter: 1.5em,
     [
-      #term[Czysta równowaga Nasha][
-        profil, z którego żaden gracz nie odejdzie sam,
-        bo własnej wypłaty nie podniesie.
-      ]
-      #term[Silne optimum Pareta][
-        nie da się komuś poprawić, nikomu nie pogarszając.
-      ]
-      #term[Cena stabilności][
-        ile razy najlepszy dobrobyt jest lepszy od najlepszej równowagi.
-      ]
-      #term[Cena anarchii][
-        ile razy najlepszy dobrobyt jest lepszy od najgorszej równowagi.
-      ]
+      #term("Self-managed networks", "autonomic networks", [
+        sieci autonomiczne (samosterujące); koncepcja, w której urządzenia same zarządzają swoimi zasobami i konfiguracją na podstawie ogólnych wytycznych administratora.
+      ])
+
+      #term("NUM", "Network Utility Maximization", [
+        klasyczny problem optymalizacyjny polegający na maksymalizacji sumy funkcji użyteczności wszystkich przepływów przy ograniczeniach pojemności łączy.
+      ])
+
+      #term("Bottleneck", "wąskie gardło", [
+        najwolniejsze łącze na trasie danego przepływu, które ogranicza jego maksymalną rzeczywistą przepustowość ($x_r = min_l s_(l r)$).
+      ])
+
     ],
-    card[
-      #text(11.5pt)[
-        *Na etap 2.* Zmienne, ograniczenia pojemności, kryterium wzorami, gracze, strategie, wypłaty.
-        #v(0.4em)
-        *Na etap 3.* Algorytm i szukanie równowagi. Krok lokalny nie wystarcza. Krok iterowany widzi, które przepływy już stanęły.
-        #v(0.4em)
-        *Obok artykułu.* Kelly, Maulloo, Tan (1998): NUM. Kephart, Chess (2003): autonomic computing.
-      ]
+    [
+      #term("AS", "Autonomous System", [
+        system autonomiczny; spójny zbiór sieci i routerów IP pod wspólną administracją techniczną (np. duża sieć korporacyjna, uczelniana lub operator).
+      ])
+
+      #term("ISP", "Internet Service Provider", [
+        dostawca usług internetowych; operator telekomunikacyjny zarządzający infrastrukturą transmisyjną i łączami tranzytowymi.
+      ])
+
+      #term("BGP", "Border Gateway Protocol", [
+        podstawowy protokół routingu międzyoperatorskiego (zewnętrznego), odpowiedzialny za wymianę tras między różnymi systemami autonomicznymi (AS).
+      ])
+
+      #term("Backhaul", "sieć dosyłowa", [
+        łącza transmisyjne łączące lokalne stacje dostępowe lub bazowe z główną siecią szkieletową operatora.
+      ])
+
     ],
   )
+]
+
+
+#slide[5. Słownik pojęć i skrótów][
+  #set text(11.5pt)
+  #let term(abbrev, full, desc) = block(spacing: 0.55em)[
+    #text(weight: "bold", fill: accent)[#abbrev]
+    #if full != "" [ (#text(fill: muted, style: "italic")[#full]) ]
+    --- #desc
+  ]
+
+  #term("IXP", "Internet Exchange Point", [
+    punkt wymiany ruchu internetowego; fizyczna infrastruktura sieciowa umożliwiająca różnym operatorom (ISP) i dostawcom treści bezpośrednią, lokalną wymianę danych bez pośredników tranzytowych.
+  ])
+
+  #term("DE-CIX", "Deutscher Commercial Internet Exchange", [
+    zlokalizowany we Frankfurcie jeden z największych na świecie punktów wymiany ruchu internetowego (IXP), obsługujący przepływy o natężeniu kilkunastu terabitów na sekundę.
+  ])
+
+  #term("PLIX", "Polish Internet eXchange", [
+    największy w Polsce komercyjny punkt wymiany ruchu internetowego zlokalizowany w Warszawie, zrzeszający krajowych i międzynarodowych operatorów telekomunikacyjnych.
+  ])
 ]
