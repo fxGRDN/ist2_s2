@@ -149,11 +149,11 @@
       ]
     ],
     [
-      #h[Pytania badawcze przeglądu (Scoping RQ)]
+      #h[Pytania badawcze przeglądu]
       #set text(size: 9.7pt)
       #entry(width: 2.6em)[RQ1][
         *Wierność metod atrybucji i probingu* \
-        W jakim stopniu mapy saliency (Grad-CAM, LRP), słowniki SAE oraz sondy odzwierciedlają mechanikę decyzyjną sieci, a na ile stanowią artefakty niezależne od parametrów modelu (*sanity checks*)?
+        W jakim stopniu mapy istotności (Grad-CAM, LRP), słowniki SAE oraz sondy odzwierciedlają mechanikę decyzyjną sieci, a na ile stanowią artefakty niezależne od parametrów modelu (*sanity checks*)?
       ]
       #entry(width: 2.6em)[RQ2][
         *Nieidentyfikowalność i wyciek informacji* \
@@ -161,7 +161,7 @@
       ]
       #entry(width: 2.6em)[RQ3][
         *Pragmatyczne kryteria ewaluacji* \
-        Jakie protokoły empiryczne (zadania kontrolne, randomizacja kaskadowa, interwencje pod skrótami tła) pozwalają obiektywnie odróżnić operacyjną semantykę od memorizacji?
+        Jakie protokoły empiryczne (zadania kontrolne, randomizacja kaskadowa, interwencje pod skrótami tła) pozwalają obiektywnie odróżnić operacyjną semantykę od zapamiętywania?
       ]
     ],
   )
@@ -182,27 +182,27 @@
       #h[Przeszukana baza naukowa]
       - *OpenAlex API & Web* — globalny otwarty indeks publikacji naukowych (integrujący m.in. Scopus, Web of Science, Crossref, PubMed, arXiv).
       - *Typy publikacji:* `article`, `inproceedings`, `preprint / misc`.
-      - *Kwerenda:* Tytuły i abstrakty (`title_and_abstract`).
+      - *Zapytanie:* Tytuły i abstrakty (`title_and_abstract`).
 
       #v(0.5em)
       #note[
         #set text(size: 9.5pt)
         *Ramy czasowe:* Publikacje z lat *2018 – 2026* \
-        #text(fill: muted)[Od przełomu Sanity Checks i TCAV (2018), przez CBM (2020), po najnowsze debaty nad identyfikowalnością SAE i actionable XAI (2024–2026).]
+        #text(fill: muted)[Od przełomu Sanity Checks i TCAV (2018), przez CBM (2020), po najnowsze debaty nad identyfikowalnością SAE i stosowalnym XAI (2024–2026).]
       ]
     ],
     [
       #h[4 Filary zapytań Boole'owskich]
       #entry[1][
-        *Atrybucja wizualna (Saliency)* \
+        *Atrybucja wizualna (mapy istotności)* \
         #mono[("Grad-CAM" OR "saliency maps" OR "Layer-wise Relevance Propagation" OR "LRP")]
       ]
       #entry[2][
-        *Mechanistyczna interpretowalność & SAE* \
+        *Mechanistyczna interpretowalność i SAE* \
         #mono[("Sparse Autoencoders" OR "SAE" OR "dictionary learning" OR "monosemanticity")]
       ]
       #entry[3][
-        *Probing semantyczny & Modele koncepcyjne* \
+        *Probing semantyczny i modele koncepcyjne* \
         #mono[("linear probing" OR "TCAV" OR "Concept Bottleneck" OR "CBM" OR "CEM")]
       ]
       #entry[4][
@@ -238,28 +238,28 @@
         #text(fill: muted)[Po automatycznej deduplikacji w zbiorze: *n = 1037* unikalnych rekordów.]
       ]
       #entry(below: 0.8em)[2][
-        *Przesiewanie (Screening tytułów i abstraktów)* \
+        *Przesiewanie tytułów i abstraktów* \
         Oceniono 1037 rekordów. Wykluczono *n = 881* prac poza zakresem widzenia komputerowego / czystych wdrożeń komercyjnych bez analizy reprezentacji. Zakwalifikowano: *n = 156*.
       ]
       #entry(below: 0.8em)[3][
-        *Kwalifikowalność (Eligibility pełnych tekstów)* \
+        *Kwalifikowalność pełnych tekstów* \
         Szczegółowo oceniono *156* artykułów. Wykluczono *n = 120* prac na podstawie zdefiniowanych kryteriów E1–E4.
       ]
       #entry(color: tag-green, below: 0pt)[4][
-        #text(fill: tag-green)[*Włączenie do syntezy (Included, n = 36)*] \
-        Mapy atrybucji: *9* · SAE & Mechanistic: *8* · Probing & Control: *9* · CBM/CEM: *10*
+        #text(fill: tag-green)[*Włączenie do syntezy (n = 36)*] \
+        Mapy atrybucji: *9* · SAE i interpretowalność mechanistyczna: *8* · Probing i zadania kontrolne: *9* · CBM/CEM: *10*
       ]
     ],
     [
       #h[Kryteria Kwalifikacji i Wykluczenia]
-      #text(weight: "bold", fill: tag-green)[Kryteria włączenia (Inclusion):]
+      #text(weight: "bold", fill: tag-green)[Kryteria włączenia:]
       - Głębokie modele widzenia komputerowego (CNN, Vision Transformers).
       - Jawna analiza semantyki, cech słownikowych lub dróg na skróty.
-      - Zastosowanie metodyk weryfikacji wierności (sanity checks, testy interwencyjne, probing z zadaniami kontrolnymi, steering).
+      - Zastosowanie metodyk weryfikacji wierności (testy poprawności, testy interwencyjne, probing z zadaniami kontrolnymi, sterowanie aktywacjami).
       - Publikacje z wiodących konferencji AI (NeurIPS, ICML, ICLR, CVPR, ECCV) lub recenzowanych czasopism.
 
       #v(0.5em)
-      #text(weight: "bold", fill: tag-red)[Kryteria wykluczenia (Exclusion, n = 120):]
+      #text(weight: "bold", fill: tag-red)[Kryteria wykluczenia (n = 120):]
       - *E1 (n = 46):* Brak formalnej/empirycznej walidacji wierności.
       - *E2 (n = 39):* Inkrementalne zmiany funkcji straty bez badania cech.
       - *E3 (n = 23):* Badania czysto tekstowe bez przeniesienia na widzenie.
@@ -283,18 +283,18 @@
     row-gutter: 1.1em,
     cell[1. Mapy atrybucji (Grad-CAM, LRP)][
       - *Upadek roszczeń realistycznych:* Adebayo i in. (NeurIPS 2018) udowodnili, że mapy gradientowe oblewają testy poprawności — działają jak detektory krawędzi niezależne od wag wyższych warstw.
-      - *Postawa pragmatyczna:* Páez (2019) wskazuje, że saliency nie odkrywa mechaniki modelu, lecz służy wyłącznie jako wstępna heurystyka wykrywania anomalii dla człowieka.
+      - *Postawa pragmatyczna:* Páez (2019) wskazuje, że mapy istotności nie odkrywają mechaniki modelu, lecz służą wyłącznie jako wstępna heurystyka wykrywania anomalii dla człowieka.
     ],
-    cell[2. Sparse Autoencoders (SAE) w wizji][
+    cell[2. Rzadkie autoenkodery (SAE) w wizji][
       - *Iluzja unikalnej dekompozycji:* *The Dead Salmons of AI* oraz Chughtai (2025) wykazują, że rozbicie superpozycji na cechy jest *nieidentyfikowalne* — wiele słowników równie dobrze rekonstruuje sieć.
       - *Postawa pragmatyczna:* Wartość cech SAE nie wynika z ich „prawdziwości ontologicznej”, lecz ze sterowalności (*activation steering*) i gaszenia skrótów.
     ],
-    cell[3. Probing semantyczny (Linear, TCAV)][
+    cell[3. Probing semantyczny (liniowy, TCAV)][
       - *Dylemat pojemności:* Wysoka dokładność sondy nie oznacza, że model używa danej cechy (Belinkov 2022); sonda potrafi nauczyć się zadania z szumu (Hewitt & Liang 2019).
       - *Postawa pragmatyczna:* Przejście od pasywnego odczytu do probingu przyczynowego (*causal probing*, Ravichander 2021) oraz mierzenia selektywności.
     ],
     cell[4. Modele koncepcyjne (CBM, CEM)][
-      - *Concept Leakage:* Ciągłe wąskie gardła tworzą kanał steganograficzny, przemycając cechy pozorne obok semantyki (Margeloiu 2021).
+      - *Wyciek konceptów (concept leakage):* Ciągłe wąskie gardła tworzą kanał steganograficzny, przemycając cechy pozorne obok semantyki (Margeloiu 2021).
       - *Załamanie interwencji:* W obecności skrótów poznawczych (*shortcut learning*) częściowa interwencja człowieka może paradoksalnie *zwiększyć błąd modelu* (Verghese 2026).
     ],
   )
@@ -313,14 +313,14 @@
     columns: (1fr, 1fr),
     column-gutter: 2.4em,
     row-gutter: 1.1em,
-    cell(label: [LUKA 1])[Brak unifikacji Sanity Checks (Grad-CAM vs CBM/SAE)][
-      O ile protokół kaskadowej randomizacji wag Adebayo (2018) przetestował mapy saliency, o tyle *nigdy nie został systematycznie zaaplikowany do warstw CBM ani słowników SAE*. Nie zbadano, czy dekompozycje cech to cecha reprezentacji, czy artefakt geometrii przestrzeni ukrytej.
+    cell(label: [LUKA 1])[Brak unifikacji testów poprawności (Grad-CAM vs CBM/SAE)][
+      O ile protokół kaskadowej randomizacji wag Adebayo (2018) przetestował mapy istotności, o tyle *nigdy nie został systematycznie zaaplikowany do warstw CBM ani słowników SAE*. Nie zbadano, czy dekompozycje cech to cecha reprezentacji, czy artefakt geometrii przestrzeni ukrytej.
     ],
     cell(label: [LUKA 3])[Odporność interwencji pod wpływem skrótów tła][
-      Większość metod interwencyjnych (steering w SAE, korekta cech w CBM) testowana jest w warunkach i.i.d. Brakuje bezpośredniego porównania siły sprawczej interwencji w obecności jawnych skrótów tła (np. Waterbirds) między architekturami *CNN vs Vision Transformers*.
+      Większość metod interwencyjnych (sterowanie aktywacjami w SAE, korekta cech w CBM) testowana jest w warunkach i.i.d. Brakuje bezpośredniego porównania siły sprawczej interwencji w obecności jawnych skrótów tła (np. Waterbirds) między architekturami *CNN vs Vision Transformers*.
     ],
     cell(label: [LUKA 2])[Brak miary selektywności w wizyjnym probingu][
-      Metodyka zadań kontrolnych Hewitta i Lianga (2019) zrewolucjonizowała NLP, ale w widzeniu komputerowym (probing cech pośrednich, TCAV, warstwy koncepcji) *nadal brakuje formalnych testów selektywności* odróżniających wydobywanie wiedzy od memorizacji.
+      Metodyka zadań kontrolnych Hewitta i Lianga (2019) zrewolucjonizowała NLP, ale w widzeniu komputerowym (probing cech pośrednich, TCAV, warstwy koncepcji) *nadal brakuje formalnych testów selektywności* odróżniających wydobywanie wiedzy od zapamiętywania.
     ],
     cell(label: [LUKA 4])[Ignorowanie poziomów abstrakcji cech][
       Wszystkie badane paradygmaty traktują cechy na płasko (pojedynczy neuron, kierunek CAV, cecha SAE, koncept CBM). Brakuje analizy sprawdzającej, jak podatność na iluzję semantyczną zależy od psycholingwistycznego poziomu abstrakcji pojęć.
@@ -347,14 +347,14 @@
       ]
 
       #v(0.5em)
-      *Realizacja w paradygmacie Pragmatic Stance:*
+      *Realizacja w paradygmacie postawy pragmatycznej:*
       #v(0.2em)
       #entry(below: 0.75em)[1][
         *Kaskadowa randomizacja wag (Protokół Adebayo)* \
-        Aplikacja protokołu zniszczenia wag warstwa po warstwie do map atrybucji (Grad-CAM), sond probingu oraz warstw Concept Bottleneck na *ResNet-50 vs ViT-B/16*.
+        Aplikacja protokołu zniszczenia wag warstwa po warstwie do map atrybucji (Grad-CAM), sond probingu oraz warstw wąskiego gardła koncepcji (CBM) na *ResNet-50 vs ViT-B/16*.
       ]
       #entry(below: 0.75em)[2][
-        *Zadania kontrolne i selektywność (Hewitt & Liang w CV)* \
+        *Zadania kontrolne i selektywność (Hewitt i Liang w wizji komputerowej)* \
         Weryfikacja selektywności sond i wektorów koncepcji na zbiorach CUB-200 i AwA2 — oddzielenie informacji operacyjnej od pojemności pamięciowej.
       ]
       #entry(below: 0pt)[3][
@@ -389,7 +389,7 @@
     columns: (1fr, 1fr),
     gutter: 2.4em,
     [
-      #h[Atrybucja, Probing & Pragmatic Stance]
+      #h[Atrybucja, probing i postawa pragmatyczna]
       #set text(size: 9pt)
       - *Selvaraju, R. R. et al. (ICCV 2017)* — #emph[Grad-CAM: Visual Explanations from Deep Networks].
       - *Adebayo, J. et al. (NeurIPS 2018)* — #emph[Sanity Checks for Saliency Maps].
@@ -399,7 +399,7 @@
       - *Orgad, H. et al. (ICML 2024)* — #emph[Position: Interpretability Can Be Actionable].
     ],
     [
-      #h[Concept Bottlenecks, SAE & Shortcut Learning]
+      #h[Modele koncepcyjne, SAE i uczenie na skróty]
       #set text(size: 9pt)
       - *Koh, P. W. et al. (ICML 2020)* — #emph[Concept Bottleneck Models].
       - *Geirhos, R. et al. (Nat. Mach. Intell. 2020)* — #emph[Shortcut Learning in Deep Neural Networks].
