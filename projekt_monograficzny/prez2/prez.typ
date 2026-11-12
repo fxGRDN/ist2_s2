@@ -26,8 +26,7 @@
       set text(font: "Noto Sans", size: 6.5pt, fill: muted)
       grid(
         columns: (1fr, auto),
-        [Przegląd literatury (PRISMA-ScR) · Kacper Borys],
-        [Slajd #counter(page).display() z #counter(page).final().first()],
+        [#counter(page).display() / #counter(page).final().first()],
       )
     }
   },
@@ -139,13 +138,13 @@
     gutter: 2.4em,
     [
       #h[Cel przeglądu zakresu]
-      Krytyczne zmapowanie metod ewaluacji wierności semantycznej w wizji komputerowej pod kątem przejścia od *naiwnego realizmu* (wiary w odkrywanie „prawdziwej ontologii sieci”) do *postawy pragmatycznej (Pragmatic Stance)*.
+      Krytyczny przegląd metod oceny wierności semantycznej w widzeniu komputerowym pod kątem przejścia od *naiwnego realizmu* (wiary w odkrywanie „prawdziwej ontologii sieci”) do *postawy pragmatycznej (Pragmatic Stance)*.
 
       #v(0.5em)
       #note[
         #set text(size: 9.5pt)
-        *Przewodnia teza pragmatyczna:* \
-        Metody XAI (Grad-CAM, SAE, sondy, CBM) nie są oknem do „świadomości” modelu. Są modelami narzędziowymi ocenianymi wyłącznie przez ich *zdolność do przewidywania błędów*, *manipulowalność przyczynową* i *odporność na skróty (shortcut learning)*.
+        *Teza:* \
+        Metody XAI (Grad-CAM, SAE, sondy, CBM) nie dają bezpośredniego wglądu w rzeczywiste działanie modelu. To narzędzia, które należy oceniać wyłącznie pod kątem *zdolności do przewidywania błędów*, *podatności na interwencje przyczynowe* i *odporności na skróty (shortcut learning)*.
       ]
     ],
     [
@@ -153,15 +152,15 @@
       #set text(size: 9.7pt)
       #entry(width: 2.6em)[RQ1][
         *Wierność metod atrybucji i probingu* \
-        W jakim stopniu mapy istotności (Grad-CAM, LRP), słowniki SAE oraz sondy odzwierciedlają mechanikę decyzyjną sieci, a na ile stanowią artefakty niezależne od parametrów modelu (*sanity checks*)?
+        W jakim stopniu mapy istotności (Grad-CAM, LRP), słowniki SAE oraz sondy odzwierciedlają mechanizm decyzyjny sieci, a na ile są artefaktami niezależnymi od parametrów modelu (*sanity checks*)?
       ]
       #entry(width: 2.6em)[RQ2][
         *Nieidentyfikowalność i wyciek informacji* \
-        Jakie patologie (wielość konkurencyjnych słowników w SAE, zjawisko *concept leakage* w CBM) obalają realistyczne traktowanie reprezentacji jako „prawdy o modelu”?
+        Jakie patologie (mnogość konkurencyjnych słowników w SAE, zjawisko *concept leakage* w CBM) obalają realistyczne traktowanie reprezentacji jako „prawdy o modelu”?
       ]
       #entry(width: 2.6em)[RQ3][
         *Pragmatyczne kryteria ewaluacji* \
-        Jakie protokoły empiryczne (zadania kontrolne, randomizacja kaskadowa, interwencje pod skrótami tła) pozwalają obiektywnie odróżnić operacyjną semantykę od zapamiętywania?
+        Jakie protokoły empiryczne (zadania kontrolne, randomizacja kaskadowa, interwencje w obecności skrótów tła) pozwalają obiektywnie odróżnić operacyjną semantykę od zapamiętywania?
       ]
     ],
   )
@@ -180,7 +179,7 @@
     gutter: 2.4em,
     [
       #h[Przeszukana baza naukowa]
-      - *OpenAlex API & Web* — globalny otwarty indeks publikacji naukowych (integrujący m.in. Scopus, Web of Science, Crossref, PubMed, arXiv).
+      - *OpenAlex API & Web* — globalny otwarty indeks publikacji naukowych (integrujący m.in. Crossref, PubMed, arXiv).
       - *Typy publikacji:* `article`, `inproceedings`, `preprint / misc`.
       - *Zapytanie:* Tytuły i abstrakty (`title_and_abstract`).
 
@@ -218,7 +217,7 @@
 // ============================================================
 #slide(
   title: [3. Selekcja Publikacji wg Metodologii PRISMA-ScR],
-  subtitle: [Rzeczywisty przepływ selekcji na bazie danych z OpenAlex (2018–2026)],
+  subtitle: [Rzeczywisty przebieg selekcji na podstawie danych z OpenAlex (2018–2026)],
   section: [PUNKT 3: PRISMA-ScR],
 )[
   #set text(size: 9.3pt)
@@ -227,7 +226,7 @@
     columns: (1.25fr, 1.15fr),
     gutter: 2.4em,
     [
-      #h[Przepływ selekcji w procedurze PRISMA-ScR]
+      #h[Przebieg selekcji w procedurze PRISMA-ScR]
       #entry(below: 0.8em)[1][
         *Identyfikacja rekordów (Baza OpenAlex, n = 1047)*
         #v(-0.25em)
@@ -239,10 +238,10 @@
       ]
       #entry(below: 0.8em)[2][
         *Przesiewanie tytułów i abstraktów* \
-        Oceniono 1037 rekordów. Wykluczono *n = 881* prac poza zakresem widzenia komputerowego / czystych wdrożeń komercyjnych bez analizy reprezentacji. Zakwalifikowano: *n = 156*.
+        Oceniono 1037 rekordów. Wykluczono *n = 881* prac spoza obszaru widzenia komputerowego oraz czysto komercyjnych wdrożeń bez analizy reprezentacji. Zakwalifikowano: *n = 156*.
       ]
       #entry(below: 0.8em)[3][
-        *Kwalifikowalność pełnych tekstów* \
+        *Ocena pełnych tekstów* \
         Szczegółowo oceniono *156* artykułów. Wykluczono *n = 120* prac na podstawie zdefiniowanych kryteriów E1–E4.
       ]
       #entry(color: tag-green, below: 0pt)[4][
@@ -254,15 +253,15 @@
       #h[Kryteria Kwalifikacji i Wykluczenia]
       #text(weight: "bold", fill: tag-green)[Kryteria włączenia:]
       - Głębokie modele widzenia komputerowego (CNN, Vision Transformers).
-      - Jawna analiza semantyki, cech słownikowych lub dróg na skróty.
-      - Zastosowanie metodyk weryfikacji wierności (testy poprawności, testy interwencyjne, probing z zadaniami kontrolnymi, sterowanie aktywacjami).
+      - Jawna analiza semantyki, cech słownikowych lub uczenia na skróty.
+      - Zastosowanie metod weryfikacji wierności (testy poprawności, testy interwencyjne, probing z zadaniami kontrolnymi, sterowanie aktywacjami).
       - Publikacje z wiodących konferencji AI (NeurIPS, ICML, ICLR, CVPR, ECCV) lub recenzowanych czasopism.
 
       #v(0.5em)
       #text(weight: "bold", fill: tag-red)[Kryteria wykluczenia (n = 120):]
       - *E1 (n = 46):* Brak formalnej/empirycznej walidacji wierności.
-      - *E2 (n = 39):* Inkrementalne zmiany funkcji straty bez badania cech.
-      - *E3 (n = 23):* Badania czysto tekstowe bez przeniesienia na widzenie.
+      - *E2 (n = 39):* Drobne modyfikacje funkcji straty bez badania cech.
+      - *E3 (n = 23):* Badania czysto tekstowe bez odniesienia do widzenia komputerowego.
       - *E4 (n = 12):* Brak możliwości replikacji / brak kodu.
     ],
   )
@@ -276,26 +275,26 @@
   subtitle: [Kluczowe ustalenia dla czterech głównych paradygmatów wyjaśnień wizualnych i probingu],
   section: [PUNKT 4: WYNIKI],
 )[
-  #set text(size: 9.3pt)
+  #set text(size: 9pt)
   #grid(
     columns: (1fr, 1fr),
     column-gutter: 2.4em,
     row-gutter: 1.1em,
     cell[1. Mapy atrybucji (Grad-CAM, LRP)][
-      - *Upadek roszczeń realistycznych:* Adebayo i in. (NeurIPS 2018) udowodnili, że mapy gradientowe oblewają testy poprawności — działają jak detektory krawędzi niezależne od wag wyższych warstw.
-      - *Postawa pragmatyczna:* Páez (2019) wskazuje, że mapy istotności nie odkrywają mechaniki modelu, lecz służą wyłącznie jako wstępna heurystyka wykrywania anomalii dla człowieka.
+      - *Podważenie założeń realizmu:* Adebayo i in. (NeurIPS 2018) wykazali, że część metod (Guided Backprop, Guided Grad-CAM) nie przechodzi testów poprawności — działają jak detektory krawędzi niezależne od wag wyższych warstw. Gradienty i Grad-CAM testy przechodzą.
+      - *Postawa pragmatyczna:* Páez (2019) postuluje odejście od wymogu pełnej wierności wyjaśnień na rzecz pragmatycznych warunków rozumienia modelu przez odbiorcę.
     ],
-    cell[2. Rzadkie autoenkodery (SAE) w wizji][
-      - *Iluzja unikalnej dekompozycji:* *The Dead Salmons of AI* oraz Chughtai (2025) wykazują, że rozbicie superpozycji na cechy jest *nieidentyfikowalne* — wiele słowników równie dobrze rekonstruuje sieć.
-      - *Postawa pragmatyczna:* Wartość cech SAE nie wynika z ich „prawdziwości ontologicznej”, lecz ze sterowalności (*activation steering*) i gaszenia skrótów.
+    cell[2. Rzadkie autoenkodery (SAE)][
+      - *Złudzenie jednoznacznej dekompozycji:* Wyjaśnienia mechanistyczne są *nieidentyfikowalne* — wiele obwodów i interpretacji równie dobrze odtwarza zachowanie sieci (Méloux, ICLR 2025). SAE znajdują pozornie interpretowalne cechy nawet w losowych sieciach (*The Dead Salmons of AI Interpretability*, 2025).
+      - *Postawa pragmatyczna:* Wartość cech SAE nie wynika z ich „prawdziwości ontologicznej”, lecz z możliwości sterowania modelem (*activation steering*) i tłumienia skrótów.
     ],
     cell[3. Probing semantyczny (liniowy, TCAV)][
-      - *Dylemat pojemności:* Wysoka dokładność sondy nie oznacza, że model używa danej cechy (Belinkov 2022); sonda potrafi nauczyć się zadania z szumu (Hewitt & Liang 2019).
-      - *Postawa pragmatyczna:* Przejście od pasywnego odczytu do probingu przyczynowego (*causal probing*, Ravichander 2021) oraz mierzenia selektywności.
+      - *Problem pojemności sondy:* Wysoka dokładność sondy nie oznacza, że model używa danej cechy (Belinkov 2022; Ravichander 2021); sonda potrafi zapamiętać losowe etykiety zadania kontrolnego (Hewitt & Liang 2019).
+      - *Postawa pragmatyczna:* Przejście od pasywnego odczytu do probingu przyczynowego (*causal probing*, por. Belinkov 2022) oraz pomiaru selektywności.
     ],
     cell[4. Modele koncepcyjne (CBM, CEM)][
-      - *Wyciek konceptów (concept leakage):* Ciągłe wąskie gardła tworzą kanał steganograficzny, przemycając cechy pozorne obok semantyki (Margeloiu 2021).
-      - *Załamanie interwencji:* W obecności skrótów poznawczych (*shortcut learning*) częściowa interwencja człowieka może paradoksalnie *zwiększyć błąd modelu* (Verghese 2026).
+      - *Wyciek konceptów (concept leakage):* Warstwa konceptów przenosi dodatkową informację o zadaniu, wykraczającą poza same koncepty (Margeloiu 2021).
+      - *Zawodność interwencji:* Przy niepełnym zbiorze konceptów częściowa interwencja człowieka może paradoksalnie *zwiększyć błąd modelu* (Verghese 2026); autorzy wiążą to z uczeniem na skróty (*shortcut learning*).
     ],
   )
 ]
@@ -305,7 +304,7 @@
 // ============================================================
 #slide(
   title: [5. Zidentyfikowane Luki Badawcze],
-  subtitle: [Białe plamy w literaturze: brak rygorystycznych testów pragmatycznych w poprzek metod],
+  subtitle: [Białe plamy w literaturze: brak rygorystycznych testów pragmatycznych wspólnych dla wszystkich metod],
   section: [PUNKT 5: LUKI],
 )[
   #set text(size: 9.6pt)
@@ -313,17 +312,17 @@
     columns: (1fr, 1fr),
     column-gutter: 2.4em,
     row-gutter: 1.1em,
-    cell(label: [LUKA 1])[Brak unifikacji testów poprawności (Grad-CAM vs CBM/SAE)][
-      O ile protokół kaskadowej randomizacji wag Adebayo (2018) przetestował mapy istotności, o tyle *nigdy nie został systematycznie zaaplikowany do warstw CBM ani słowników SAE*. Nie zbadano, czy dekompozycje cech to cecha reprezentacji, czy artefakt geometrii przestrzeni ukrytej.
+    cell(label: [LUKA 1])[Brak wspólnych testów poprawności (Grad-CAM vs CBM/SAE)][
+      O ile protokół kaskadowej randomizacji wag Adebayo (2018) zastosowano do map istotności, a pojedyncze prace testują SAE na losowych sieciach, o tyle *brakuje wspólnego protokołu stosowanego równolegle do map atrybucji, sond, warstw CBM i słowników SAE*.
     ],
-    cell(label: [LUKA 3])[Odporność interwencji pod wpływem skrótów tła][
-      Większość metod interwencyjnych (sterowanie aktywacjami w SAE, korekta cech w CBM) testowana jest w warunkach i.i.d. Brakuje bezpośredniego porównania siły sprawczej interwencji w obecności jawnych skrótów tła (np. Waterbirds) między architekturami *CNN vs Vision Transformers*.
+    cell(label: [LUKA 3])[Odporność interwencji na skróty tła][
+      Metody interwencyjne (sterowanie aktywacjami w SAE, korekta cech w CBM) testowane są głównie w warunkach i.i.d.; odporność CBM na zmianę tła badali Koh i in. (2020). Brakuje jednak bezpośredniego porównania skuteczności interwencji w obecności jawnych skrótów tła (np. Waterbirds) między architekturami *CNN vs Vision Transformers*.
     ],
-    cell(label: [LUKA 2])[Brak miary selektywności w wizyjnym probingu][
-      Metodyka zadań kontrolnych Hewitta i Lianga (2019) zrewolucjonizowała NLP, ale w widzeniu komputerowym (probing cech pośrednich, TCAV, warstwy koncepcji) *nadal brakuje formalnych testów selektywności* odróżniających wydobywanie wiedzy od zapamiętywania.
+    cell(label: [LUKA 2])[Brak miary selektywności w probingu modeli wizyjnych][
+      Metoda zadań kontrolnych Hewitta i Lianga (2019) upowszechniła się w NLP, ale w widzeniu komputerowym (probing cech pośrednich, TCAV, warstwy koncepcji) *nadal brakuje formalnych testów selektywności* odróżniających wydobywanie wiedzy od zapamiętywania.
     ],
-    cell(label: [LUKA 4])[Ignorowanie poziomów abstrakcji cech][
-      Wszystkie badane paradygmaty traktują cechy na płasko (pojedynczy neuron, kierunek CAV, cecha SAE, koncept CBM). Brakuje analizy sprawdzającej, jak podatność na iluzję semantyczną zależy od psycholingwistycznego poziomu abstrakcji pojęć.
+    cell(label: [LUKA 4])[Pomijanie poziomów abstrakcji cech][
+      Wszystkie badane paradygmaty traktują cechy jednopoziomowo (pojedynczy neuron, kierunek CAV, cecha SAE, koncept CBM). Brakuje analizy sprawdzającej, jak podatność na iluzję semantyczną zależy od psycholingwistycznego poziomu abstrakcji pojęć.
     ],
   )
 ]
@@ -343,36 +342,36 @@
     [
       #h[Koncepcja badania magisterskiego]
       #note[
-        *Tytuł:* „Empiryczny audyt pragmatyczny wyjaśnień wizualnych i probingu semantycznego: od map atrybucji po modele koncepcyjne”
+        *Tytuł:* „Identyfikowalność wizualnych metod wyjaśniających”
       ]
 
       #v(0.5em)
-      *Realizacja w paradygmacie postawy pragmatycznej:*
+      *Realizacja zgodnie z postawą pragmatyczną:*
       #v(0.2em)
       #entry(below: 0.75em)[1][
         *Kaskadowa randomizacja wag (Protokół Adebayo)* \
-        Aplikacja protokołu zniszczenia wag warstwa po warstwie do map atrybucji (Grad-CAM), sond probingu oraz warstw wąskiego gardła koncepcji (CBM) na *ResNet-50 vs ViT-B/16*.
+        Zastosowanie protokołu randomizacji wag warstwa po warstwie do map atrybucji (Grad-CAM), sond oraz warstw wąskiego gardła koncepcji (CBM) na *ResNet-50 vs ViT-B/16*.
       ]
       #entry(below: 0.75em)[2][
-        *Zadania kontrolne i selektywność (Hewitt i Liang w wizji komputerowej)* \
-        Weryfikacja selektywności sond i wektorów koncepcji na zbiorach CUB-200 i AwA2 — oddzielenie informacji operacyjnej od pojemności pamięciowej.
+        *Zadania kontrolne i selektywność (Hewitt i Liang w widzeniu komputerowym)* \
+        Weryfikacja selektywności sond i wektorów koncepcji na zbiorach CUB-200 i AwA2 — oddzielenie informacji zawartej w reprezentacji od pojemności pamięciowej sondy.
       ]
       #entry(below: 0pt)[3][
-        *Ewaluacja interwencji pod wpływem skrótów* \
-        Testowanie manipulowalności przyczynowej na zbiorze Waterbirds: czy interwencja człowieka rzeczywiście odwraca wpływ skrótu tła?
+        *Ocena interwencji w obecności skrótów* \
+        Sprawdzenie podatności na interwencje przyczynowe na zbiorze Waterbirds: czy interwencja człowieka rzeczywiście odwraca wpływ skrótu tła?
       ]
     ],
     [
       #h[Wartość Dodana i Znaczenie Badania]
       #set list(spacing: 1em)
       - *Oryginalność i unifikacja metodyczna:* \
-        Audyt literatury 2025–2026 wskazuje brak prac zestawiających metody atrybucji (Grad-CAM), probing i modele koncepcyjne (CBM) pod wspólnym, rygorystycznym rygorem randomizacji i zadań kontrolnych.
+        Przegląd literatury z lat 2025–2026 wskazuje na brak prac zestawiających metody atrybucji (Grad-CAM), probing i modele koncepcyjne (CBM) w ramach wspólnego, rygorystycznego protokołu randomizacji i zadań kontrolnych.
 
       - *Przełamanie fałszywego zaufania:* \
-        Zamiast jałowych sporów o to, „czy sieć myśli jak człowiek”, badanie dostarczy twardych, inżynierskich kryteriów określających, kiedy wyjaśnieniom można bezpiecznie ufać.
+        Zamiast jałowych sporów o to, „czy sieć myśli jak człowiek”, badanie ma dostarczyć empirycznych kryteriów pomagających ocenić, kiedy wyjaśnieniom można ufać.
 
-      - *Znaczenie aplikacyjne:* \
-        Kluczowe w systemach medycznych i krytycznych, gdzie poleganie na fałszywych wyjaśnieniach post-hoc stwarza bezpośrednie ryzyko błędnych decyzji.
+      - *Znaczenie praktyczne:* \
+        Istotne dla zastosowań w medycynie i systemach krytycznych, gdzie poleganie na fałszywych wyjaśnieniach post-hoc stwarza bezpośrednie ryzyko błędnych decyzji.
     ],
   )
 ]
@@ -382,7 +381,7 @@
 // ============================================================
 #slide(
   title: [Kluczowa Bibliografia Przeglądu Literatury],
-  subtitle: [Wybrane fundamentalne pozycje reprezentujące 4 nurty włączone do syntezy PRISMA-ScR],
+  subtitle: [Wybrane podstawowe pozycje reprezentujące 4 nurty włączone do syntezy PRISMA-ScR],
   section: [LITERATURA],
 )[
   #grid(
@@ -396,19 +395,19 @@
       - *Hewitt, J., & Liang, P. (EMNLP 2019)* — #emph[Designing and Interpreting Probes with Control Tasks].
       - *Páez, A. (2019)* — #emph[The Pragmatic Turn in Explainable AI (XAI)]. Minds and Machines.
       - *Belinkov, Y. (Computational Linguistics 2022)* — #emph[Probing Classifiers: Promises, Shortcomings, and Advances].
-      - *Orgad, H. et al. (ICML 2024)* — #emph[Position: Interpretability Can Be Actionable].
+      - *Orgad, H. et al. (ICML 2026)* — #emph[Position: Interpretability Can Be Actionable].
     ],
     [
       #h[Modele koncepcyjne, SAE i uczenie na skróty]
       #set text(size: 9pt)
       - *Koh, P. W. et al. (ICML 2020)* — #emph[Concept Bottleneck Models].
       - *Geirhos, R. et al. (Nat. Mach. Intell. 2020)* — #emph[Shortcut Learning in Deep Neural Networks].
-      - *Margeloiu, A. et al. (2021)* — #emph[Do Concept Bottleneck Models Learn Intended Concepts? Concept Leakage].
+      - *Margeloiu, A. et al. (2021)* — #emph[Do Concept Bottleneck Models Learn as Intended?]
       - *Zarlenga, M. E. et al. (NeurIPS 2022)* — #emph[Concept Embedding Models].
-      - *Verghese, S. et al. (arXiv 2026)* — #emph[Harmful Partial Interventions and Benign Leakage in Concept-based Models].
-      - *Chughtai, B. et al. / Méloux et al. (ICLR)* — #emph[Everything, Everywhere, All at Once: Is Mechanistic Interpretability Identifiable?].
+      - *Verghese, G. et al. (arXiv 2026)* — #emph[Harmful Partial Interventions and Benign Leakage in Concept-based Models].
+      - *Méloux, M. et al. (ICLR 2025)* — #emph[Everything, Everywhere, All at Once: Is Mechanistic Interpretability Identifiable?]
     ],
   )
   #v(1.2em)
-  #text(9pt, fill: muted)[Pełny zestaw 36 pozycji ujętych w procedurze PRISMA-ScR zdeponowano w bazie projektu.]
+  #text(9pt, fill: muted)[Pełny zestaw 36 pozycji ujętych w procedurze PRISMA-ScR jest dostępny w bazie projektu.]
 ]
