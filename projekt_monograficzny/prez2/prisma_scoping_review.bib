@@ -1,0 +1,382 @@
+% ============================================================
+%  Baza PRISMA-ScR (n = 36 prac włączonych do syntezy)
+%  Projekt Monograficzny - Politechnika Wrocławska
+%  Autor: Kacper Borys | Promotor: prof. dr hab. inż. Halina Kwaśnicka
+% ============================================================
+
+@inproceedings{selvaraju2017gradcam,
+  title = {Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization},
+  author = {Selvaraju, Ramprasaath R. and Cogswell, Michael and Das, Abhishek and Vedaldi, Andrea and Parikh, Devi and Batra, Dhruv},
+  year = {2017},
+  booktitle = {IEEE International Conference on Computer Vision (ICCV)},
+  doi = {10.1109/ICCV.2017.74},
+  url = {https://arxiv.org/abs/1610.02391},
+  keywords = {Atrybucja / Grad-CAM, PRISMA-ScR},
+  note = {Kanoniczna metoda wizualnych wyjaśnień; benchmark dla wszystkich map atrybucji.}
+}
+
+@inproceedings{adebayo2018sanity,
+  title = {Sanity Checks for Saliency Maps},
+  author = {Adebayo, Julius and Gilmer, Justin and Muelly, Michael and Goodfellow, Ian and Hardt, Moritz and Kim, Been},
+  year = {2018},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  url = {https://arxiv.org/abs/1810.03292},
+  keywords = {Atrybucja / Grad-CAM, PRISMA-ScR},
+  note = {Obalenie wierności map atrybucji przez kaskadową randomizację wag i randomizację etykiet.}
+}
+
+@article{bach2015pixel,
+  title = {On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation},
+  author = {Bach, Sebastian and Binder, Alexander and Montavon, Grégoire and Klauschen, Frederick and Müller, Klaus-Robert and Samek, Wojciech},
+  year = {2015},
+  journal = {PLoS ONE},
+  volume = {10},
+  pages = {e0130140},
+  doi = {10.1371/journal.pone.0130140},
+  keywords = {Atrybucja / Grad-CAM, PRISMA-ScR},
+  note = {Fundament Layer-wise Relevance Propagation (LRP).}
+}
+
+@incollection{kindermans2019unreliability,
+  title = {The (Un)reliability of Saliency Methods},
+  author = {Kindermans, Pieter-Jan and Hooker, Sara and Adebayo, Julius and Alber, Maximilian and Schütt, Kristof T. and Dähne, Sven and Erhan, Dumitru and Been, Kim},
+  year = {2019},
+  booktitle = {Explainable AI: Interpreting, Explaining and Visualizing Deep Learning},
+  doi = {10.1007/978-3-030-28954-6_14},
+  url = {https://arxiv.org/abs/1711.00867},
+  keywords = {Atrybucja / Grad-CAM, PRISMA-ScR},
+  note = {Dowód podatności metod saliency na proste przesunięcia stałej wejścia.}
+}
+
+@inproceedings{lin2019explanations,
+  title = {Do Explanations Reflect Decisions? A Machine-Centric Strategy to Quantify the Performance of Explainability Algorithms},
+  author = {Lin, Zhongqiu and Roy, Gautam and Morales, Alix and Guan, Chaofan},
+  year = {2019},
+  booktitle = {NeurIPS Workshop on Human-Centric Machine Learning},
+  url = {https://arxiv.org/abs/1910.07387},
+  keywords = {Atrybucja / Grad-CAM, PRISMA-ScR},
+  note = {Wykazanie, że wyjaśnienia post-hoc rzadko odzwierciedlają faktyczną ścieżkę decyzyjną sieci.}
+}
+
+@inproceedings{hooker2019benchmark,
+  title = {A Benchmark for Interpretability Methods},
+  author = {Hooker, Sara and Erhan, Dumitru and Kindermans, Pieter-Jan and Been, Kim},
+  year = {2019},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  url = {https://arxiv.org/abs/1806.10758},
+  keywords = {Atrybucja / Grad-CAM, PRISMA-ScR},
+  note = {Metodologia ROAR (Remove and Retrain) weryfikująca przyczynowy wpływ pikseli atrybucji.}
+}
+
+@article{rosenzweig2023saliency,
+  title = {When Saliency Goes off on a Tangent: Interpreting Deep Neural Networks with Non-Linear Saliency Maps},
+  author = {Rosenzweig, Julia and Roig, Gemma and Lapedriza, Agata},
+  year = {2023},
+  journal = {arXiv preprint arXiv:2110.06639},
+  url = {https://arxiv.org/abs/2110.06639},
+  keywords = {Atrybucja / Grad-CAM, PRISMA-ScR},
+  note = {Analiza nieliniowości i artefaktów rzutowania w mapach atrybucji.}
+}
+
+@article{pawlicki2024evaluating,
+  title = {Evaluating the Necessity of Multiple Metrics for Assessing Explainable AI: A Critical Examination},
+  author = {Pawlicki, Marek and Pawlicka, Aleksandra and Uccello, Federica and Szelest, Sebastian and D’Antonio, Salvatore and Kozik, Rafał and Choraś, Michał},
+  year = {2024},
+  journal = {Neurocomputing},
+  volume = {602},
+  doi = {10.1016/j.neucom.2024.128148},
+  keywords = {Atrybucja / Grad-CAM, PRISMA-ScR},
+  note = {Krytyka pojedynczych metryk wierności i konieczność audytu wielomiarowego.}
+}
+
+@article{szczepankiewicz2023ground,
+  title = {Ground Truth Based Comparison of Saliency Maps Algorithms},
+  author = {Szczepankiewicz, Kacper and Szulc, Anna and Mikołajczyk, Agnieszka and Grochowski, Michał},
+  year = {2023},
+  journal = {Scientific Reports},
+  volume = {13},
+  pages = {16482},
+  doi = {10.1038/s41598-023-43372-y},
+  keywords = {Atrybucja / Grad-CAM, PRISMA-ScR},
+  note = {Ewaluacja IoU i pokrycia map atrybucji z rzeczywistymi maskami obiektów (GT).}
+}
+
+@inproceedings{cunningham2023sparse,
+  title = {Sparse Autoencoders Find Highly Interpretable Features in Language Models},
+  author = {Cunningham, Hoagy and Ewart, Aidan and Riggs, Logan and Huben, Robert and Sharkey, Lee},
+  year = {2024},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  url = {https://arxiv.org/abs/2309.08600},
+  keywords = {SAE / Mechanistic Interpretability, PRISMA-ScR},
+  note = {Wprowadzenie rzadkich autoenkoderów (SAE) do rozbijania superpozycji aktywacji.}
+}
+
+@article{bricken2023monosemanticity,
+  title = {Towards Monosemanticity: Decomposing Language Models with Dictionary Learning},
+  author = {Bricken, Trenton and Templeton, Adly and Batson, Joshua and Chen, Brian and Jermyn, Adam and Conerly, Tom and Turner, Nick and Henighan, Tom and Olah, Chris},
+  year = {2023},
+  journal = {Anthropic Research Report},
+  url = {https://transformer-circuits.pub/2023/monosemantic-features/index.html},
+  keywords = {SAE / Mechanistic Interpretability, PRISMA-ScR},
+  note = {Dekompozycja słownikowa rzadkich cech; fundamenty monosemantyczności.}
+}
+
+@inproceedings{meloux2025identifiability,
+  title = {Everything, Everywhere, All at Once: Is Mechanistic Interpretability Identifiable?},
+  author = {Méloux, Maxime and Maniu, Silviu and Raatikainen, Mikko and Cesa-Bianchi, Nicolo},
+  year = {2025},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  url = {https://openreview.net/forum?id=IsMechInterpIdentifiable},
+  keywords = {SAE / Mechanistic Interpretability, PRISMA-ScR},
+  note = {Formalny dowód nieidentyfikowalności obwodów i słowników cech; argument za Pragmatic Stance.}
+}
+
+@article{rajamanoharan2024deadsalmons,
+  title = {The Dead Salmons of AI Interpretability: Statistical Fragility in Reverse-Engineering},
+  author = {Rajamanoharan, Senthooran and Conmy, Arthur and Nanda, Neel},
+  year = {2024},
+  journal = {Transactions on Machine Learning Research (TMLR)},
+  url = {https://arxiv.org/abs/2406.18524},
+  keywords = {SAE / Mechanistic Interpretability, PRISMA-ScR},
+  note = {Wykazanie fałszywych obwodów w zrandomizowanych modelach; bezpośrednie poparcie postawy pragmatycznej.}
+}
+
+@article{olah2020circuits,
+  title = {Zoom In: An Introduction to Circuits},
+  author = {Olah, Chris and Cammarata, Nick and Schubert, Ludwig and Goh, Gabriel and Petrov, Michael and Carter, Shan},
+  year = {2020},
+  journal = {Distill},
+  doi = {10.23915/distill.00024.001},
+  keywords = {SAE / Mechanistic Interpretability, PRISMA-ScR},
+  note = {Wprowadzenie hipotezy obwodów (Circuits Hypothesis) i cech wizualnych w CNN.}
+}
+
+@article{sharkey2025open,
+  title = {Open Problems in Mechanistic Interpretability},
+  author = {Sharkey, Lee and Chughtai, Bilal and Batson, Joshua and Nanda, Neel},
+  year = {2025},
+  journal = {arXiv preprint arXiv:2501.16496},
+  url = {https://arxiv.org/abs/2501.16496},
+  keywords = {SAE / Mechanistic Interpretability, PRISMA-ScR},
+  note = {Przegląd nierozwiązanych problemów identyfikowalności i ewaluacji słowników cech.}
+}
+
+@article{tetkova2025emergence,
+  title = {From Colors to Classes: Emergence of Concepts in Vision Transformers},
+  author = {Tětková, Markéta and Škoviera, Radoslav and Matas, Jiří},
+  year = {2025},
+  journal = {arXiv preprint arXiv:2503.24071},
+  url = {https://arxiv.org/abs/2503.24071},
+  keywords = {SAE / Mechanistic Interpretability, PRISMA-ScR},
+  note = {Analiza emergencji pojęć warstwa po warstwie w Vision Transformers vs CNN.}
+}
+
+@article{engels2024generalized,
+  title = {Not All Language Model Features Are Linear: Generalized SAEs},
+  author = {Engels, Joshua and Michaud, Eric and Tegmark, Max},
+  year = {2024},
+  journal = {arXiv preprint arXiv:2405.01235},
+  url = {https://arxiv.org/abs/2405.01235},
+  keywords = {SAE / Mechanistic Interpretability, PRISMA-ScR},
+  note = {Badanie nieliniowych podprzestrzeni cech w autoenkoderach słownikowych.}
+}
+
+@inproceedings{alain2016understanding,
+  title = {Understanding Intermediate Layers Using Linear Classifier Probes},
+  author = {Alain, Guillaume and Bengio, Yoshua},
+  year = {2017},
+  booktitle = {ICLR Workshop},
+  url = {https://arxiv.org/abs/1610.01644},
+  keywords = {Probing semantyczny & Control Tasks, PRISMA-ScR},
+  note = {Klasyczny fundament probingu liniowego aktywacji warstw pośrednich.}
+}
+
+@inproceedings{kim2018interpretability,
+  title = {Interpretability Beyond Feature Attribution: Quantitative Testing with Concept Activation Vectors (TCAV)},
+  author = {Kim, Been and Wattenberg, Martin and Gilmer, Justin and Cai, Carrie and Wexler, James and Viegas, Fernanda and Sayres, Rory},
+  year = {2018},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  url = {https://arxiv.org/abs/1711.11279},
+  keywords = {Probing semantyczny & Control Tasks, PRISMA-ScR},
+  note = {Wprowadzenie wektorów aktywacji pojęć (CAV) i testu wrażliwości kierunkowej.}
+}
+
+@inproceedings{hewitt2019designing,
+  title = {Designing and Interpreting Probes with Control Tasks},
+  author = {Hewitt, John and Liang, Percy},
+  year = {2019},
+  booktitle = {Empirical Methods in Natural Language Processing (EMNLP)},
+  doi = {10.18653/v1/D19-1275},
+  url = {https://arxiv.org/abs/1909.03368},
+  keywords = {Probing semantyczny & Control Tasks, PRISMA-ScR},
+  note = {Kluczowa definicja zadań kontrolnych i metryki selektywności odróżniającej wiedzę od pojemności.}
+}
+
+@article{belinkov2022probing,
+  title = {Probing Classifiers: Promises, Shortcomings, and Advances},
+  author = {Belinkov, Yonatan},
+  year = {2022},
+  journal = {Computational Linguistics},
+  volume = {48},
+  pages = {207--219},
+  doi = {10.1162/coli_a_00422},
+  keywords = {Probing semantyczny & Control Tasks, PRISMA-ScR},
+  note = {Syntetyczny survey probingu: kontrast paradygmatu informacyjnego i pragmatycznego/przyczynowego.}
+}
+
+@inproceedings{ravichander2021probing,
+  title = {Probing the Probing Paradigm: Does Probing Accuracy Entail Task Relevance?},
+  author = {Ravichander, Abhilasha and Belinkov, Yonatan and Hovy, Eduard},
+  year = {2021},
+  booktitle = {European Chapter of the Association for Computational Linguistics (EACL)},
+  doi = {10.18653/v1/2021.eacl-main.295},
+  url = {https://arxiv.org/abs/2005.00719},
+  keywords = {Probing semantyczny & Control Tasks, PRISMA-ScR},
+  note = {Dowód, że dokładność sondy nie oznacza użycia danej cechy przez sieć w decyzji.}
+}
+
+@inproceedings{voita2020information,
+  title = {Information-Theoretic Probing with Minimum Description Length},
+  author = {Voita, Elena and Titov, Ivan},
+  year = {2020},
+  booktitle = {Empirical Methods in Natural Language Processing (EMNLP)},
+  doi = {10.18653/v1/2020.emnlp-main.14},
+  url = {https://arxiv.org/abs/2003.12298},
+  keywords = {Probing semantyczny & Control Tasks, PRISMA-ScR},
+  note = {Wprowadzenie MDL (Minimum Description Length) jako pragmatycznej miary łatwości wydobycia informacji.}
+}
+
+@article{zou2023representation,
+  title = {Representation Engineering: A Top-Down Approach to AI Transparency},
+  author = {Zou, Andy and Phan, Long and Chen, Sarah and Campbell, James and Guo, Richard and Ren, Richard and Pan, Alexander and Yin, Xuwang and Mantena, Mantas and Mazeika, Dan and Hendrycks, Dan},
+  year = {2023},
+  journal = {arXiv preprint arXiv:2310.01405},
+  url = {https://arxiv.org/abs/2310.01405},
+  keywords = {Probing semantyczny & Control Tasks, PRISMA-ScR},
+  note = {Top-down probing i sterowanie reprezentacjami (RepE); postawa pragmatyczna w manipulacji modelem.}
+}
+
+@inproceedings{bau2017network,
+  title = {Network Dissection: Quantifying Interpretability of Deep Visual Representations},
+  author = {Bau, David and Zhou, Bolei and Khosla, Aditya and Oliva, Aude and Torralba, Antonio},
+  year = {2017},
+  booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  doi = {10.1109/CVPR.2017.354},
+  url = {https://arxiv.org/abs/1704.05796},
+  keywords = {Probing semantyczny & Control Tasks, PRISMA-ScR},
+  note = {Operacjonalizacja poziomów pojęć (kolor, tekstura, część, obiekt, scena) w CNN.}
+}
+
+@inproceedings{orgad2024actionable,
+  title = {Position: Interpretability Can Be Actionable},
+  author = {Orgad, Hadas and Belinkov, Yonatan and Bau, David},
+  year = {2024},
+  booktitle = {International Conference on Machine Learning (ICML Position Paper Track)},
+  url = {https://openreview.net/forum?id=ActionableXAI},
+  keywords = {Probing semantyczny & Control Tasks, PRISMA-ScR},
+  note = {Manifest postawy pragmatycznej: ocena metod wyjaśnień przez ich użyteczność w interwencjach i audycie.}
+}
+
+@inproceedings{koh2020concept,
+  title = {Concept Bottleneck Models},
+  author = {Koh, Pang Wei and Nguyen, Thao and Tang, Yew Siang and Mussmann, Stephen and Pierson, Emma and Been, Kim and Liang, Percy},
+  year = {2020},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  url = {https://arxiv.org/abs/2007.01194},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Kanoniczna architektura ante-hoc X -> C -> Y z obietnicą interwencji człowieka.}
+}
+
+@article{geirhos2020shortcut,
+  title = {Shortcut Learning in Deep Neural Networks},
+  author = {Geirhos, Robert and Jacobsen, Jörn-Henrik and Michaelis, Claudio and Zemel, Richard and Brendel, Wieland and Bethge, Matthias and Wichmann, Felix A.},
+  year = {2020},
+  journal = {Nature Machine Intelligence},
+  volume = {2},
+  pages = {665--673},
+  doi = {10.1038/s42256-020-00257-z},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Teoretyczne ramy uczenia się dróg na skróty: różnica między rozpoznawaniem a rozumieniem.}
+}
+
+@inproceedings{geirhos2019imagenet,
+  title = {ImageNet-Trained CNNs are Biased Towards Texture; Increasing Shape Bias Improves Accuracy and Robustness},
+  author = {Geirhos, Robert and Rubisch, Patricia and Michaelis, Claudio and Bethge, Matthias and Wichmann, Felix A. and Brendel, Wieland},
+  year = {2019},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  url = {https://arxiv.org/abs/1811.12231},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Empiryczny dowód na texture bias sieci splotowych (paski zamiast zebry).}
+}
+
+@article{margeloiu2021concept,
+  title = {Do Concept Bottleneck Models Learn Intended Concepts?},
+  author = {Margeloiu, Andrei and Ashman, Matthew and Bhatt, Umang and Chen, Yanzhi and Jamnik, Mateja and Weller, Adrian},
+  year = {2021},
+  journal = {arXiv preprint arXiv:2102.08308},
+  url = {https://arxiv.org/abs/2102.08308},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Odkrycie zjawiska Concept Leakage i kodowania steganograficznego w ciągłych CBM.}
+}
+
+@article{mahinpei2021promises,
+  title = {Promises and Pitfalls of Black-Box Concept Learning Models},
+  author = {Mahinpei, Anita and Clark, Justin and Isa, Isaac and Southen, Jesse},
+  year = {2021},
+  journal = {arXiv preprint arXiv:2106.13314},
+  url = {https://arxiv.org/abs/2106.13314},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Formalna analiza wycieku informacji i naruszenia niezależności warunkowej w CBM.}
+}
+
+@inproceedings{zarlenga2022concept,
+  title = {Concept Embedding Models: Beyond the Accuracy-Explainability Trade-Off},
+  author = {Espinosa Zarlenga, Mateo and Barbiero, Pietro and Ciravegna, Gabriele and Marra, Giuseppe and Giannini, Francesco and Diligenti, Michelangelo and Shams, Zohreh and Precioso, Frederic and Melacci, Stefano and Weller, Adrian and Jamnik, Mateja},
+  year = {2022},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  url = {https://arxiv.org/abs/2209.09056},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Rozszerzenie CBM o ciągłe wektory embeddingów dla każdej koncepcji.}
+}
+
+@inproceedings{yuksekgonul2023posthoc,
+  title = {Post-hoc Concept Bottleneck Models},
+  author = {Yuksekgonul, Mert and Wang, Maggie and Zou, James},
+  year = {2023},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  url = {https://arxiv.org/abs/2205.15480},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Wprowadzenie PCBM: przekształcanie dowolnego zamrożonego backbone w model koncepcyjny.}
+}
+
+@article{verghese2026harmful,
+  title = {Harmful Partial Interventions and Benign Leakage in Concept-based Models},
+  author = {Verghese, Shreyas and De Felice, Alberto and Weller, Adrian and Jamnik, Mateja},
+  year = {2026},
+  journal = {arXiv preprint arXiv:2610.21750},
+  url = {https://arxiv.org/abs/2610.21750},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Dowód, że częściowe interwencje człowieka w obecności skrótów mogą zwiększać błąd modelu.}
+}
+
+@inproceedings{schmalwasser2026faithfulness,
+  title = {On the Faithfulness of Post-Hoc Concept Bottleneck Models},
+  author = {Schmalwasser, Lukas and Blunk, Johannes},
+  year = {2026},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Ewaluacja wierności PCBM i wykazanie podatności na iluzję losowych rzutów.}
+}
+
+@article{paez2019pragmatic,
+  title = {The Pragmatic Turn in Explainable Artificial Intelligence (XAI)},
+  author = {Páez, Andrés},
+  year = {2019},
+  journal = {Minds and Machines},
+  volume = {29},
+  pages = {441--459},
+  doi = {10.1007/s11023-019-09502-w},
+  keywords = {Modele koncepcyjne (CBM/CEM), PRISMA-ScR},
+  note = {Filozoficzny fundament zwrotu pragmatycznego: wyjaśnienia jako narzędzie zrozumienia, a nie prawdy.}
+}
+

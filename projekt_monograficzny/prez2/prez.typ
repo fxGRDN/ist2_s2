@@ -105,7 +105,8 @@
 // ============================================================
 #align(left + horizon)[
   #kicker[SYSTEMATYCZNY PRZEGLĄD ZAKRESU PRZY UŻYCIU METODY PRISMA]
-  #block(above: 12pt, below: 14pt, text(25pt, weight: "bold", fill: primary)[Czy model rozumie, co widzi?])
+  #block(above: 12pt, below: 14pt, text(25pt, weight: "bold", fill: primary)[Nieidentyfikowalność wyjaśnień w modelach wizyjnych:
+  audyt pragmatyczny])
   #block(width: 82%, text(12pt, fill: rgb("#334155"))[Od Grad-CAM po SAE i CBM: Przegląd metod wyjaśnień wizualnych i probingu w perspektywie pragmatycznej])
 
   #block(above: 2em, below: 1.4em, line(length: 100%, stroke: 0.6pt + rule))
@@ -307,22 +308,18 @@
   subtitle: [Białe plamy w literaturze: brak rygorystycznych testów pragmatycznych wspólnych dla wszystkich metod],
   section: [PUNKT 5: LUKI],
 )[
-  #set text(size: 9.6pt)
+  #set text(size: 10.4pt)
   #grid(
-    columns: (1fr, 1fr),
-    column-gutter: 2.4em,
-    row-gutter: 1.1em,
+    columns: (1fr, 1fr, 1fr),
+    column-gutter: 2em,
     cell(label: [LUKA 1])[Brak wspólnych testów poprawności (Grad-CAM vs CBM/SAE)][
       O ile protokół kaskadowej randomizacji wag Adebayo (2018) zastosowano do map istotności, a pojedyncze prace testują SAE na losowych sieciach, o tyle *brakuje wspólnego protokołu stosowanego równolegle do map atrybucji, sond, warstw CBM i słowników SAE*.
     ],
+    cell(label: [LUKA 2])[Brak miary selektywności w probingu i cechach SAE][
+      Metoda zadań kontrolnych Hewitta i Lianga (2019) upowszechniła się w NLP, ale w widzeniu komputerowym (probing cech pośrednich, TCAV, warstwy koncepcji, cechy SAE) *nadal brakuje formalnych testów selektywności* odróżniających wydobywanie wiedzy od zapamiętywania.
+    ],
     cell(label: [LUKA 3])[Odporność interwencji na skróty tła][
       Metody interwencyjne (sterowanie aktywacjami w SAE, korekta cech w CBM) testowane są głównie w warunkach i.i.d.; odporność CBM na zmianę tła badali Koh i in. (2020). Brakuje jednak bezpośredniego porównania skuteczności interwencji w obecności jawnych skrótów tła (np. Waterbirds) między architekturami *CNN vs Vision Transformers*.
-    ],
-    cell(label: [LUKA 2])[Brak miary selektywności w probingu modeli wizyjnych][
-      Metoda zadań kontrolnych Hewitta i Lianga (2019) upowszechniła się w NLP, ale w widzeniu komputerowym (probing cech pośrednich, TCAV, warstwy koncepcji) *nadal brakuje formalnych testów selektywności* odróżniających wydobywanie wiedzy od zapamiętywania.
-    ],
-    cell(label: [LUKA 4])[Pomijanie poziomów abstrakcji cech][
-      Wszystkie badane paradygmaty traktują cechy jednopoziomowo (pojedynczy neuron, kierunek CAV, cecha SAE, koncept CBM). Brakuje analizy sprawdzającej, jak podatność na iluzję semantyczną zależy od psycholingwistycznego poziomu abstrakcji pojęć.
     ],
   )
 ]
@@ -332,7 +329,7 @@
 // ============================================================
 #slide(
   title: [6. Wnioski i Uzasadnienie Własnego Badania],
-  subtitle: [Projekt magisterski jako wielopoziomowy audyt pragmatyczny metod wyjaśnień wizualnych],
+  subtitle: [Praca magisterska jako wielopoziomowy audyt pragmatyczny metod wyjaśnień wizualnych],
   section: [PUNKT 6: BADANIE],
 )[
   #set text(size: 9.3pt)
@@ -340,9 +337,9 @@
     columns: (1.25fr, 1.15fr),
     gutter: 2.4em,
     [
-      #h[Koncepcja badania magisterskiego]
+      #h[Koncepcja badania ]
       #note[
-        *Tytuł:* „Identyfikowalność wizualnych metod wyjaśniających”
+        *Tytuł:* „Nieidentyfikowalność wyjaśnień w modelach wizyjnych: audyt pragmatyczny”
       ]
 
       #v(0.5em)
@@ -350,7 +347,7 @@
       #v(0.2em)
       #entry(below: 0.75em)[1][
         *Kaskadowa randomizacja wag (Protokół Adebayo)* \
-        Zastosowanie protokołu randomizacji wag warstwa po warstwie do map atrybucji (Grad-CAM), sond oraz warstw wąskiego gardła koncepcji (CBM) na *ResNet-50 vs ViT-B/16*.
+        Zastosowanie protokołu randomizacji wag warstwa po warstwie do map atrybucji (Grad-CAM jako punkt odniesienia — u Adebayo przechodzi testy na CNN), sond oraz warstw wąskiego gardła koncepcji (CBM) na *ResNet-50 vs ViT-B/16*.
       ]
       #entry(below: 0.75em)[2][
         *Zadania kontrolne i selektywność (Hewitt i Liang w widzeniu komputerowym)* \
@@ -381,7 +378,7 @@
 // ============================================================
 #slide(
   title: [Kluczowa Bibliografia Przeglądu Literatury],
-  subtitle: [Wybrane podstawowe pozycje reprezentujące 4 nurty włączone do syntezy PRISMA-ScR],
+  subtitle: [Wybrane podstawowe pozycje dla 4 nurtów przeglądu — z wyszukiwania OpenAlex oraz prace źródłowe spoza niego],
   section: [LITERATURA],
 )[
   #grid(
@@ -390,10 +387,11 @@
     [
       #h[Atrybucja, probing i postawa pragmatyczna]
       #set text(size: 9pt)
-      - *Selvaraju, R. R. et al. (ICCV 2017)* — #emph[Grad-CAM: Visual Explanations from Deep Networks].
+      - *Selvaraju, R. R. et al. (IJCV 2019)* — #emph[Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization].
       - *Adebayo, J. et al. (NeurIPS 2018)* — #emph[Sanity Checks for Saliency Maps].
       - *Hewitt, J., & Liang, P. (EMNLP 2019)* — #emph[Designing and Interpreting Probes with Control Tasks].
       - *Páez, A. (2019)* — #emph[The Pragmatic Turn in Explainable AI (XAI)]. Minds and Machines.
+      - *Ravichander, A. et al. (EACL 2021)* — #emph[Probing the Probing Paradigm: Does Probing Accuracy Entail Task Relevance?]
       - *Belinkov, Y. (Computational Linguistics 2022)* — #emph[Probing Classifiers: Promises, Shortcomings, and Advances].
       - *Orgad, H. et al. (ICML 2026)* — #emph[Position: Interpretability Can Be Actionable].
     ],
@@ -406,6 +404,7 @@
       - *Zarlenga, M. E. et al. (NeurIPS 2022)* — #emph[Concept Embedding Models].
       - *Verghese, G. et al. (arXiv 2026)* — #emph[Harmful Partial Interventions and Benign Leakage in Concept-based Models].
       - *Méloux, M. et al. (ICLR 2025)* — #emph[Everything, Everywhere, All at Once: Is Mechanistic Interpretability Identifiable?]
+      - *Méloux, M. et al. (arXiv 2025)* — #emph[The Dead Salmons of AI Interpretability].
     ],
   )
   #v(1.2em)
